@@ -6,7 +6,11 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm libdecor
+pacman -Syu --noconfirm \
+    glu       \
+    libdecor  \
+    sdl_mixer \
+    sdl_net
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
@@ -19,3 +23,6 @@ get-debloated-pkgs --add-common --prefer-nano
 echo "Making stable build of Foobillard++..."
 echo "---------------------------------------------------------------"
 wget https://downloads.sourceforge.net/foobillardplus/foobillardplus-3.42beta.tar.gz
+bsdtar -xvf foobillardplus-3.42beta.tar.gz
+
+cd foobillardplus-3.42beta
