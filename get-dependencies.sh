@@ -26,3 +26,20 @@ wget https://downloads.sourceforge.net/foobillardplus/foobillardplus-3.42beta.ta
 bsdtar -xvf foobillardplus-3.42beta.tar.gz
 
 cd foobillardplus-3.42beta
+sed -i 's|/opt/foobillardplus/bin/||' foobillardplus.desktop
+sed -i 's|/opt/foobillardplus/||' foobillardplus.desktop
+sed -e 's|freetype-config|pkg-config freetype2|g' -i src/Makefile.am
+sed -e 's|inline float|float|g' -i src/vmath.*
+sed -i '30i #include <stdlib.h>' src/vmath.c
+sed -i '30i #include <math.h>' src/vmath.c
+sed -i 's/abs(y)/fabsf(y)/g' src/vmath.c
+
+aclocal --force
+autoconf -f
+autoheader -f
+automake -a -c -f 
+./configure
+make -j$(nproc) datadir="./AppDir/bin/data"
+mv -v foobillardplus.desktop ../AppDir
+cp foobillardplus.png ./AppDir/.DirIcon
+mv -v foobillardplus.png ./AppDir
