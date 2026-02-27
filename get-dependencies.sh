@@ -38,7 +38,7 @@ sed -i 's/abs(y)/fabsf(y)/g' src/vmath.c
 aclocal --force
 autoconf -f
 autoheader -f
-automake -a -c -f 
+automake -a -c -f
 ./configure
 make -j$(nproc) datadir="./AppDir/bin/data"
 
