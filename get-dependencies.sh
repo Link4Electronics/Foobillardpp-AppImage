@@ -23,7 +23,9 @@ get-debloated-pkgs --add-common --prefer-nano
 # If the application needs to be manually built that has to be done down here
 echo "Making stable build of Foobillard++..."
 echo "---------------------------------------------------------------"
-wget https://downloads.sourceforge.net/foobillardplus/foobillardplus-3.42beta.tar.gz
+VERSION=3.42beta
+echo $VERSION > ~/version
+wget https://downloads.sourceforge.net/foobillardplus/foobillardplus-VERSION.tar.gz
 bsdtar -xvf foobillardplus-3.42beta.tar.gz
 
 mkdir -p ./AppDir/bin
