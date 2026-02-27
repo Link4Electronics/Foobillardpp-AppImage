@@ -41,7 +41,7 @@ autoconf -f
 autoheader -f
 automake -a -c -f
 ./configure
-make -j$(nproc) datadir="./AppDir/bin/data"
+make -j$(nproc) #datadir="./AppDir/bin/data"
 
 mv -v foobillardplus.desktop ../AppDir
 cp ./foobillardplus.png ../AppDir/.DirIcon
